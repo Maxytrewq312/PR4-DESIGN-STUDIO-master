@@ -21,24 +21,25 @@ namespace ПРАКТИЧЕСКАЯ_4
 
         private void button5_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Clients cl = new Clients();
-                cl.Name = textBox1.Text;
-                cl.Surname = textBox2.Text;
-                cl.Number = textBox3.Text;
-                if (cl.Name == "" || cl.Surname == "" || cl.Number == "")
+                try
                 {
-                    throw new Exception("Не заполнены поля имени, фамилии или номера");
+                    Clients cl = new Clients();
+                    cl.Name = textBox1.Text;
+                    cl.Surname = textBox2.Text;
+                    cl.Number = textBox3.Text;
+                    if (cl.Name == "" || cl.Surname == "" || cl.Number == "")
+                    {
+                        throw new Exception("Не заполнены поля имени, фамилии или номера");
+                    }
+                    Program.DP.Clients.Add(cl);
+                    Program.DP.SaveChanges();
                 }
-                Program.DP.Clients.Add(cl);
-                Program.DP.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "Ошибка!",
+                catch (Exception ex)
+                {
+                    MessageBox.Show("" + ex.Message, "Ошибка!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                }
+            MessageBox.Show("Заявка подана", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
